@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — shashankva.me
 
-## Getting Started
+Personal portfolio built with Next.js, inspired by the [Najaf Framer SaaS template](https://cloudy-help-155294.framer.app/).
 
-First, run the development server:
+## Quick start
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Customize your content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Edit **`src/lib/data.ts`** — all copy, links, projects, experience, and skills live there.
 
-## Learn More
+## Add your resume
 
-To learn more about Next.js, take a look at the following resources:
+Place your PDF at **`public/resume.pdf`** — the download button on the site will serve it automatically.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy to shashankva.me
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Vercel (recommended)
 
-## Deploy on Vercel
+1. Push this repo to GitHub
+2. Import the project at [vercel.com/new](https://vercel.com/new)
+3. Deploy (zero config needed for Next.js)
+4. In **Project Settings → Domains**, add `shashankva.me` and `www.shashankva.me`
+5. At your domain registrar, add the DNS records Vercel provides:
+   - **A record** `@` → `76.76.21.21`
+   - **CNAME** `www` → `cname.vercel-dns.com`
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Build locally
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
+
+## Sections
+
+| Section    | Template equivalent |
+|-----------|---------------------|
+| Hero      | SaaS hero           |
+| About     | Client stats        |
+| Skills    | Features grid       |
+| Tech Stack| Integrations marquee|
+| Experience| Why Us alternating  |
+| Projects  | Case studies        |
+| Resume    | Pricing cards       |
+| Contact   | FAQ + footer CTA    |
+
+## Stack
+
+- Next.js 16 (App Router)
+- Tailwind CSS 4
+- Framer Motion
+- Lucide React
