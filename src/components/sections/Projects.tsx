@@ -147,7 +147,7 @@ function ProjectCard({
             )}
           </div>
 
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-muted line-clamp-3">
+          <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">
             {project.description}
           </p>
 

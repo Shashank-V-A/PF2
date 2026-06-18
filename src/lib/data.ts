@@ -38,7 +38,7 @@ export const skillCategories = [
     id: "frontend",
     label: "Frontend",
     description: "Interfaces I ship with regularly.",
-    items: ["HTML", "CSS", "JavaScript", "TypeScript", "React"],
+    items: ["HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js"],
   },
   {
     id: "backend",
@@ -177,7 +177,7 @@ export const resumeInfo = {
     "Hackathon achievements",
   ],
   skillGroups: [
-    { label: "Frontend", items: "HTML · CSS · JavaScript · TypeScript · React" },
+    { label: "Frontend", items: "HTML · CSS · JavaScript · TypeScript · React · Next.js" },
     { label: "Backend", items: "Node.js · Express.js · Django · REST APIs" },
     { label: "Data", items: "PostgreSQL · SQLite · MySQL · MongoDB" },
     { label: "Tools", items: "Supabase · Vercel · Git · Tableau · Power BI" },

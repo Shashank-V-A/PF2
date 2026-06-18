@@ -12,6 +12,7 @@ export const skillIconUrls: Record<string, string> = {
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
   React:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  "Next.js": "https://cdn.simpleicons.org/nextdotjs/ffffff",
   "Node.js":
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
   "Express.js":

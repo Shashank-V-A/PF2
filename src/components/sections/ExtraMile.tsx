@@ -64,7 +64,7 @@ function AchievementCard({
           {event}
         </h3>
         <p className="mt-1 text-sm text-muted">{item.organization}</p>
-        <p className="mt-3 line-clamp-2 text-sm leading-relaxed text-foreground/55">
+        <p className="mt-3 text-sm leading-relaxed text-foreground/55">
           {item.description}
         </p>
       </div>
