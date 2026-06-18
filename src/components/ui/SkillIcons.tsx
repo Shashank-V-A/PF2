@@ -31,8 +31,7 @@ export const skillIconUrls: Record<string, string> = {
   Vercel:
     "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
   Git: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-  GitHub:
-    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  GitHub: "https://cdn.simpleicons.org/github/ffffff",
   OAuth: "https://cdn.simpleicons.org/openid/FF6F00",
   Tableau: "/skills/tableau.png",
   "Power BI": "/skills/powerbi.png",
