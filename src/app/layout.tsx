@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Instrument_Serif } from "next/font/google";
+import { JotformChatbot } from "@/components/ui/JotformChatbot";
 import "./globals.css";
 import { siteConfig } from "@/lib/data";
 
@@ -67,6 +68,7 @@ export default function RootLayout({
     >
       <body className="min-h-full bg-background font-sans text-foreground">
         {children}
+        <JotformChatbot />
       </body>
     </html>
   );
