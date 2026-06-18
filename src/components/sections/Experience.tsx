@@ -1,11 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Briefcase, MapPin } from "lucide-react";
+import { Briefcase, ImageIcon, MapPin } from "lucide-react";
+import { CertificateModal } from "@/components/ui/CertificateModal";
 import { SectionHeader, FadeIn } from "@/components/ui/SectionHeader";
 import { experience } from "@/lib/data";
 import { cn } from "@/lib/utils";
+
+type ExperienceEntry = (typeof experience)[number];
+
+function getCertificateImages(job: ExperienceEntry): string[] {
+  if (job.certificateImages?.length) return job.certificateImages;
+  if (job.certificateImage) return [job.certificateImage];
+  return [];
+}
 
 function CompanyLogo({
   company,
@@ -46,10 +56,12 @@ function ExperienceCard({
   job,
   index,
   isLast,
+  onViewCertificate,
 }: {
-  job: (typeof experience)[number];
+  job: ExperienceEntry;
   index: number;
   isLast: boolean;
+  onViewCertificate: (job: ExperienceEntry) => void;
 }) {
   const num = String(index + 1).padStart(2, "0");
 
@@ -80,9 +92,7 @@ function ExperienceCard({
           transition={{ duration: 0.25, ease: "easeOut" }}
           className={cn(
             "group relative mb-10 min-w-0 flex-1 overflow-hidden rounded-2xl border bg-card shadow-[0_8px_32px_rgba(0,0,0,0.2)] transition-all duration-300 hover:border-accent/25 hover:bg-card-hover hover:shadow-[0_12px_40px_rgba(0,0,0,0.28)]",
-            job.current
-              ? "border-accent/30"
-              : "border-border"
+            job.current ? "border-accent/30" : "border-border"
           )}
         >
           {job.current && (
@@ -142,18 +152,35 @@ function ExperienceCard({
               </ul>
             )}
 
-            {job.tech && job.tech.length > 0 && (
-              <div className="mt-6 flex flex-wrap gap-2">
-                {job.tech.map((t) => (
-                  <span
-                    key={t}
-                    className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-foreground/70 transition-colors duration-300 group-hover:border-accent/20"
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            )}
+            <div className="mt-6 flex flex-wrap items-center gap-3">
+              {job.tech && job.tech.length > 0 && (
+                <div className="flex flex-wrap gap-2">
+                  {job.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="rounded-full border border-border bg-background/60 px-3 py-1 text-xs text-foreground/70 transition-colors duration-300 group-hover:border-accent/20"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {getCertificateImages(job).length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => onViewCertificate(job)}
+                  className={cn(
+                    "inline-flex items-center gap-2 rounded-full border border-accent/25 bg-accent/5 px-4 py-2 text-xs font-medium text-accent-light transition-all duration-300",
+                    "hover:border-accent/45 hover:bg-accent/10 hover:text-accent",
+                    job.tech?.length ? "sm:ml-auto" : ""
+                  )}
+                >
+                  <ImageIcon size={14} strokeWidth={1.5} />
+                  View certificate
+                </button>
+              )}
+            </div>
           </div>
         </motion.article>
       </div>
@@ -162,6 +189,9 @@ function ExperienceCard({
 }
 
 export function Experience() {
+  const [activeCertificate, setActiveCertificate] =
+    useState<ExperienceEntry | null>(null);
+
   return (
     <section id="experience" className="relative overflow-hidden py-24 sm:py-32">
       <div className="absolute inset-0 grid-bg opacity-20" />
@@ -180,10 +210,21 @@ export function Experience() {
               job={job}
               index={i}
               isLast={i === experience.length - 1}
+              onViewCertificate={setActiveCertificate}
             />
           ))}
         </div>
       </div>
+
+      {activeCertificate && getCertificateImages(activeCertificate).length > 0 && (
+        <CertificateModal
+          open={!!activeCertificate}
+          onClose={() => setActiveCertificate(null)}
+          title={`${activeCertificate.role} — ${activeCertificate.company}`}
+          organization={activeCertificate.company}
+          imageSrc={getCertificateImages(activeCertificate)}
+        />
+      )}
     </section>
   );
 }

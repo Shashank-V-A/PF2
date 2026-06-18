@@ -78,6 +78,8 @@ export const experience: {
   location?: string;
   tech?: string[];
   current?: boolean;
+  certificateImage?: string;
+  certificateImages?: string[];
 }[] = [
   {
     company: "Startup Haven",
@@ -95,6 +97,10 @@ export const experience: {
     logoUrl: "/logos/startup-haven.png",
     logoColor: "#2563eb",
     tech: ["React", "Node.js", "Web Scraping", "REST APIs"],
+    certificateImages: [
+      "/certificates/startup-haven-offer-1.png",
+      "/certificates/startup-haven-offer-2.png",
+    ],
   },
   {
     company: "HAL – RWR&DC, AFCS Group",
@@ -111,6 +117,7 @@ export const experience: {
     logoUrl: "/logos/hal.png",
     logoColor: "#1e3a5f",
     tech: ["Automation", "Documentation", "Data Validation"],
+    certificateImage: "/certificates/hal-internship.png",
   },
 ];
 
