@@ -1,11 +1,11 @@
+// ─── Site ───────────────────────────────────────────────────────────────────
+
 export const siteConfig = {
   name: "Shashank VA",
   title: "Full-Stack Developer",
   domain: "https://shashankva.me",
   email: "shashankva05@gmail.com",
-  phone: "+91 7022742719",
   location: "Bangalore, India",
-  tagline: "I craft digital experiences, pixel to production",
   description:
     "Full-stack developer and B.E. CSE (Data Science) student at MVJ College of Engineering — building accessible EdTech, analytics platforms, and production web apps. 5× hackathon podium finisher.",
   social: {
@@ -32,6 +32,19 @@ export const stats = [
   { value: "5×", label: "hackathon podiums" },
   { value: "2", label: "internships completed" },
 ];
+
+export const aboutContent = {
+  headline: "Building products that people love to use",
+  traits: ["Problem solver", "Team player", "Fast learner", "Detail oriented"],
+  bio: [
+    "I am an enthusiastic learner and aspiring software engineer with a strong passion for building modern web applications. I focus on creating seamless user experiences and developing reliable, efficient backend systems.",
+    "I am also the Co-Founder of BrightWords, an AI-powered assistive learning platform designed to support children with special needs. Through BrightWords, I strive to leverage technology to promote accessibility, inclusivity, and enriched learning experiences for every child.",
+    "Beyond academics, I enjoy exploring emerging technologies, playing sports, and relaxing with a good cup of tea.",
+  ],
+  passion: "Building Impactful Solutions",
+};
+
+// ─── Skills ─────────────────────────────────────────────────────────────────
 
 export const skillCategories = [
   {
@@ -60,12 +73,7 @@ export const skillCategories = [
   },
 ] as const;
 
-export type SkillCategoryId = (typeof skillCategories)[number]["id"];
-
-/** @deprecated Use skillCategories */
-export const skills = skillCategories;
-
-export const techStack = skillCategories.flatMap((c) => c.items);
+// ─── Experience ─────────────────────────────────────────────────────────────
 
 export const experience: {
   company: string;
@@ -74,7 +82,6 @@ export const experience: {
   description: string;
   highlights: string[];
   logoUrl?: string;
-  logoColor?: string;
   location?: string;
   tech?: string[];
   current?: boolean;
@@ -95,7 +102,6 @@ export const experience: {
       "Improved decision-making workflows with reliable downstream price and offer comparisons",
     ],
     logoUrl: "/logos/startup-haven.png",
-    logoColor: "#2563eb",
     tech: ["React", "Node.js", "Web Scraping", "REST APIs"],
     certificateImages: [
       "/certificates/startup-haven-offer-1.png",
@@ -115,11 +121,12 @@ export const experience: {
       "Organized datasets and improved consistency of technical reports for stakeholders",
     ],
     logoUrl: "/logos/hal.png",
-    logoColor: "#1e3a5f",
     tech: ["Automation", "Documentation", "Data Validation"],
     certificateImage: "/certificates/hal-internship.png",
   },
 ];
+
+// ─── Projects ───────────────────────────────────────────────────────────────
 
 export const projects = [
   {
@@ -132,11 +139,6 @@ export const projects = [
     category: "Web2",
     year: "2025",
     accent: "#a78bfa",
-    highlights: [
-      "Analyze, compare, leaderboard & PDF export flows",
-      "Logistic-regression ML synced from Python trainer to TypeScript",
-      "Optional Supabase cache and brand workspace",
-    ],
   },
   {
     title: "VaultIQ",
@@ -148,13 +150,10 @@ export const projects = [
     category: "Web2",
     year: "2025",
     accent: "#60a5fa",
-    highlights: [
-      "Live price sync via CoinGecko & CoinDCX",
-      "Indian tax logic — 30% tax, 4% cess, 1% TDS",
-      "CSV export & PostgreSQL cloud sync on Vercel",
-    ],
   },
 ];
+
+// ─── Resume ─────────────────────────────────────────────────────────────────
 
 export const resumeInfo = {
   education: {
@@ -184,74 +183,52 @@ export const resumeInfo = {
   ],
 };
 
-export const extraMile = {
-  achievements: [
-    {
-      title: "Cepheus Hackathon — 3rd Place",
-      organization: "Atria Institute of Technology",
-      year: "2026",
-      description:
-        "Won 3rd prize at the Cepheus Hackathon in the Web3 domain, organized by GDG On Campus AIT and Code Club — April 22–23, 2026.",
-      type: "hackathon" as const,
-      link: "",
-      certificateImage: "/certificates/cepheus-atria.png",
-    },
-    {
-      title: "Express Launchpad Hackathon — Winner",
-      organization: "Nexla Inc",
-      year: "2026",
-      description:
-        "Delivered an API and data-pipeline integration project, winning the Express Launchpad hackathon with a live demo.",
-      type: "hackathon" as const,
-      link: "",
-      certificateImage: "/certificates/nexla-express-launchpad.png",
-    },
-    {
-      title: "Growth Hackathon — Winner",
-      organization: "Residency BLR",
-      year: "2025",
-      description:
-        "Shipped a working prototype with pitch and live demo, winning the Growth Hackathon at Residency BLR.",
-      type: "hackathon" as const,
-      link: "",
-      certificateImage: "/certificates/growth-hackathon-residency.png",
-    },
-    {
-      title: "HackSpark Hackathon — Winner",
-      organization: "DSATM",
-      year: "2025",
-      description:
-        "Built and demoed a full-stack solution under a 24-hour deadline, winning HackSpark at DSATM.",
-      type: "hackathon" as const,
-      link: "",
-      certificateImage: "/certificates/hackspark-dsatm.png",
-    },
-    {
-      title: "Pixelgenesis Hackathon — 2nd Place",
-      organization: "MVJ College of Engineering",
-      year: "2025",
-      description:
-        "Secured 2nd place at the PixelGenesis Hackathon during VertechX 13.0 — a 24-hour inter-collegiate fest at MVJ College of Engineering, Nov 13–14, 2025.",
-      type: "hackathon" as const,
-      link: "",
-      certificateImage: "/certificates/pixelgenesis-mvj.png",
-    },
-  ] as {
-    title: string;
-    organization: string;
-    year: string;
-    description: string;
-    type: "hackathon" | "academic" | "community" | "award";
-    link?: string;
-    /** Place image in public/certificates/ — e.g. nexla-express-launchpad.jpg */
-    certificateImage?: string;
-  }[],
-  certifications: [] as {
-    title: string;
-    issuer: string;
-    year: string;
-    credentialId?: string;
-    verifyUrl?: string;
-    skills: string[];
-  }[],
-};
+// ─── Extra Mile ─────────────────────────────────────────────────────────────
+
+export const achievements = [
+  {
+    title: "Cepheus Hackathon — 3rd Place",
+    organization: "Atria Institute of Technology",
+    year: "2026",
+    description:
+      "Won 3rd prize at the Cepheus Hackathon in the Web3 domain, organized by GDG On Campus AIT and Code Club — April 22–23, 2026.",
+    type: "hackathon" as const,
+    certificateImage: "/certificates/cepheus-atria.png",
+  },
+  {
+    title: "Express Launchpad Hackathon — Winner",
+    organization: "Nexla Inc",
+    year: "2026",
+    description:
+      "Delivered an API and data-pipeline integration project, winning the Express Launchpad hackathon with a live demo.",
+    type: "hackathon" as const,
+    certificateImage: "/certificates/nexla-express-launchpad.png",
+  },
+  {
+    title: "Growth Hackathon — Winner",
+    organization: "Residency BLR",
+    year: "2025",
+    description:
+      "Shipped a working prototype with pitch and live demo, winning the Growth Hackathon at Residency BLR.",
+    type: "hackathon" as const,
+    certificateImage: "/certificates/growth-hackathon-residency.png",
+  },
+  {
+    title: "HackSpark Hackathon — Winner",
+    organization: "DSATM",
+    year: "2025",
+    description:
+      "Built and demoed a full-stack solution under a 24-hour deadline, winning HackSpark at DSATM.",
+    type: "hackathon" as const,
+    certificateImage: "/certificates/hackspark-dsatm.png",
+  },
+  {
+    title: "Pixelgenesis Hackathon — 2nd Place",
+    organization: "MVJ College of Engineering",
+    year: "2025",
+    description:
+      "Secured 2nd place at the PixelGenesis Hackathon during VertechX 13.0 — a 24-hour inter-collegiate fest at MVJ College of Engineering, Nov 13–14, 2025.",
+    type: "hackathon" as const,
+    certificateImage: "/certificates/pixelgenesis-mvj.png",
+  },
+] as const;

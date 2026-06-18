@@ -11,14 +11,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { SectionHeader, FadeIn } from "@/components/ui/SectionHeader";
-import { stats, siteConfig } from "@/lib/data";
-
-const traits = [
-  "Problem solver",
-  "Team player",
-  "Fast learner",
-  "Detail oriented",
-];
+import { aboutContent, resumeInfo, stats, siteConfig } from "@/lib/data";
 
 const statIcons = [Trophy, Briefcase];
 
@@ -58,7 +51,7 @@ function CodeEditorMockup() {
           {"  "}
           <span className="text-green-300">passion</span>:{" "}
           <span className="text-orange-300">
-            &quot;Building Impactful Solutions&quot;
+            &quot;{aboutContent.passion}&quot;
           </span>
           ,{"\n"}
           {"  "}
@@ -141,31 +134,17 @@ export function About() {
               </div>
 
               <h3 className="mt-5 font-display text-2xl font-medium text-foreground sm:text-3xl lg:text-[2rem]">
-                Building products that people love to use
+                {aboutContent.headline}
               </h3>
 
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-muted sm:text-[15px]">
-                <p>
-                  I am an enthusiastic learner and aspiring software engineer with
-                  a strong passion for building modern web applications. I focus on
-                  creating seamless user experiences and developing reliable,
-                  efficient backend systems.
-                </p>
-                <p>
-                  I am also the Co-Founder of BrightWords, an AI-powered assistive
-                  learning platform designed to support children with special needs.
-                  Through BrightWords, I strive to leverage technology to promote
-                  accessibility, inclusivity, and enriched learning experiences for
-                  every child.
-                </p>
-                <p>
-                  Beyond academics, I enjoy exploring emerging technologies, playing
-                  sports, and relaxing with a good cup of tea.
-                </p>
+                {aboutContent.bio.map((paragraph) => (
+                  <p key={paragraph.slice(0, 32)}>{paragraph}</p>
+                ))}
               </div>
 
               <div className="mt-6 flex flex-wrap gap-2 border-t border-border/60 pt-6">
-                {traits.map((trait) => (
+                {aboutContent.traits.map((trait) => (
                   <span
                     key={trait}
                     className="rounded-full border border-border bg-background px-3.5 py-1.5 text-xs text-foreground/75"
@@ -181,10 +160,10 @@ export function About() {
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">
-                    MVJ College of Engineering
+                    {resumeInfo.education.school}
                   </p>
                   <p className="mt-0.5 text-xs text-muted">
-                    B.E. CSE (Data Science) · Expected May 2027
+                    {resumeInfo.education.degree} · {resumeInfo.education.period}
                   </p>
                 </div>
               </div>

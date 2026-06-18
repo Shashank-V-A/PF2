@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /** Official brand icons via Devicon & Simple Icons CDN */
-export const skillIconUrls: Record<string, string> = {
+const skillIconUrls: Record<string, string> = {
   HTML: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
   CSS: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
   JavaScript:
