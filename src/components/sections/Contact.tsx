@@ -7,6 +7,9 @@ import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
 import { siteConfig } from "@/lib/data";
 
+const WEB3FORMS_ACCESS_KEY =
+  process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+
 function ContactFormSkeleton() {
   return (
     <div className="space-y-5" aria-hidden>
@@ -34,6 +37,7 @@ function ContactForm() {
     email: "",
     message: "",
   });
+  const [botcheck, setBotcheck] = useState(false);
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -43,27 +47,56 @@ function ContactForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (botcheck) return;
+
+    if (!WEB3FORMS_ACCESS_KEY) {
+      setStatus("error");
+      setErrorMessage(
+        "Contact form is not configured. Please email me directly."
+      );
+      return;
+    }
+
     setStatus("loading");
     setErrorMessage("");
 
     try {
-      const response = await fetch("/api/contact", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formState),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          name: formState.name.trim(),
+          email: formState.email.trim(),
+          message: formState.message.trim(),
+          subject: `Portfolio inquiry from ${formState.name.trim()}`,
+          from_name: siteConfig.name,
+          replyto: formState.email.trim(),
+        }),
       });
 
-      const data = (await response.json()) as { error?: string };
+      const data = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
 
-      if (!response.ok) {
-        throw new Error(data.error || "Something went wrong. Please try again.");
+      if (!response.ok || !data.success) {
+        throw new Error(
+          data.message || "Failed to send message. Please try again."
+        );
       }
 
       setStatus("success");
     } catch (err) {
       setStatus("error");
       setErrorMessage(
-        err instanceof Error ? err.message : "Something went wrong. Please try again."
+        err instanceof Error
+          ? err.message
+          : "Something went wrong. Please try again."
       );
     }
   };
@@ -91,6 +124,17 @@ function ContactForm() {
         </div>
       ) : (
         <>
+          <input
+            type="checkbox"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            checked={botcheck}
+            onChange={(e) => setBotcheck(e.target.checked)}
+            className="hidden"
+            aria-hidden
+          />
+
           <div className="space-y-5">
             <div>
               <label
