@@ -195,6 +195,7 @@ export const achievements = [
     description:
       "Won 3rd prize at the Cepheus Hackathon in the Web3 domain, organized by GDG On Campus AIT and Code Club — April 22–23, 2026.",
     type: "hackathon" as const,
+    posterImage: "/certificates/posters/cepheus-atria.png",
     certificateImage: "/certificates/cepheus-atria.png",
   },
   {
@@ -204,7 +205,9 @@ export const achievements = [
     description:
       "Delivered an API and data-pipeline integration project, winning the Express Launchpad hackathon with a live demo.",
     type: "hackathon" as const,
+    posterImage: "/certificates/posters/nexla-express-launchpad.png",
     certificateImage: "/certificates/nexla-express-launchpad.png",
+    imageFit: "contain" as const,
   },
   {
     title: "Growth Hackathon — Winner",
@@ -213,6 +216,7 @@ export const achievements = [
     description:
       "Shipped a working prototype with pitch and live demo, winning the Growth Hackathon at Residency BLR.",
     type: "hackathon" as const,
+    posterImage: "/certificates/posters/growth-hackathon-residency.png",
     certificateImage: "/certificates/growth-hackathon-residency.png",
   },
   {
@@ -222,6 +226,7 @@ export const achievements = [
     description:
       "Built and demoed a full-stack solution under a 24-hour deadline, winning HackSpark at DSATM.",
     type: "hackathon" as const,
+    posterImage: "/certificates/posters/hackspark-dsatm.png",
     certificateImage: "/certificates/hackspark-dsatm.png",
   },
   {
@@ -231,6 +236,7 @@ export const achievements = [
     description:
       "Secured 2nd place at the PixelGenesis Hackathon during VertechX 13.0 — a 24-hour inter-collegiate fest at MVJ College of Engineering, Nov 13–14, 2025.",
     type: "hackathon" as const,
+    posterImage: "/certificates/posters/pixelgenesis-mvj.png",
     certificateImage: "/certificates/pixelgenesis-mvj.png",
   },
 ] as const;
