@@ -139,6 +139,7 @@ export const projects = [
     category: "Web2",
     year: "2025",
     accent: "#a78bfa",
+    image: "/projects/rankmint.png",
   },
   {
     title: "VaultIQ",
@@ -150,6 +151,7 @@ export const projects = [
     category: "Web2",
     year: "2025",
     accent: "#60a5fa",
+    image: "/projects/vaultiq.png",
   },
 ];
 

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import {
@@ -71,6 +72,21 @@ function ProjectLinks({
 }
 
 function ProjectVisual({ project }: { project: Project }) {
+  if ("image" in project && project.image) {
+    return (
+      <div className="relative h-44 w-full shrink-0 overflow-hidden bg-muted/10">
+        <Image
+          src={project.image}
+          alt={`${project.title} preview`}
+          fill
+          className="object-cover object-top"
+          sizes="(max-width: 640px) 100vw, 50vw"
+        />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-card to-transparent" />
+      </div>
+    );
+  }
+
   const Icon = categoryIcons[project.category] ?? FolderOpen;
   const monogram = projectMonogram(project.title);
 
