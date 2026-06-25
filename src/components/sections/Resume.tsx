@@ -1,7 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Download, GraduationCap, FileText } from "lucide-react";
+import { Download, FileText } from "lucide-react";
 import { SectionHeader, FadeIn } from "@/components/ui/SectionHeader";
 import { Button } from "@/components/ui/Button";
 import { resumeInfo, siteConfig } from "@/lib/data";
@@ -120,8 +121,14 @@ export function Resume() {
                 </ul>
 
                 <div className="mt-8 flex items-center gap-3 rounded-xl border border-border bg-background/60 p-4">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent/30 bg-accent/10">
-                    <GraduationCap size={18} className="text-accent-light" />
+                  <div className="relative flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-white p-1.5">
+                    <Image
+                      src={education.logoUrl}
+                      alt={`${education.school} logo`}
+                      width={40}
+                      height={40}
+                      className="h-full w-full object-contain"
+                    />
                   </div>
                   <div>
                     <p className="text-sm font-medium text-foreground">

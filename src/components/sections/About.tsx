@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import {
   Briefcase,
   Download,
-  GraduationCap,
   MapPin,
   Trophy,
 } from "lucide-react";
@@ -155,8 +154,14 @@ export function About() {
               </div>
 
               <div className="mt-6 flex items-start gap-3 rounded-xl border border-border bg-background/60 p-4">
-                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-border bg-card text-accent-light">
-                  <GraduationCap size={16} strokeWidth={1.5} />
+                <div className="relative flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-border bg-white p-1.5">
+                  <Image
+                    src={resumeInfo.education.logoUrl}
+                    alt={`${resumeInfo.education.school} logo`}
+                    width={36}
+                    height={36}
+                    className="h-full w-full object-contain"
+                  />
                 </div>
                 <div>
                   <p className="text-sm font-medium text-foreground">

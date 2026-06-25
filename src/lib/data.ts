@@ -160,6 +160,7 @@ export const projects = [
 export const resumeInfo = {
   education: {
     school: "MVJ College of Engineering",
+    logoUrl: "/logos/mvj.png",
     degree: "B.E. in CSE – Data Science",
     location: "Bangalore, India",
     period: "Expected May 2027",
